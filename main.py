@@ -1,6 +1,6 @@
 from models.categoria import Categoria
 from models.item import Item
-from repositorio import Repositorio
+
 
 def main():
     saude=Categoria('saude','necessidade')

@@ -26,5 +26,12 @@ class Repositorio():
 
     def inserir_categoria(self,categoria):
         self.cursor.execute("INSERT INTO categoria(nome, tipo) VALUES (?,?)", (categoria.nome, categoria.tipo)) 
-         
-j
+        novo_id = self.cursor.lastrowid
+        self.banco.commit()
+        return novo_id
+
+    def inserir_item(self, item, categoria_id):
+        self.cursor.execute("INSERT INTO item(nome,preco,categoria_id, status) VALUES (?,?,?,?)",(item.nome, item.preco, categoria_id, item.status))
+        novo_id_item = self.cursor.lastrowid
+        self.banco.commit()
+        return novo_id_item    
