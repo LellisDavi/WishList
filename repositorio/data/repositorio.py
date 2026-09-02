@@ -67,5 +67,10 @@ class Repositorio():
             item_buscado =Item(nome=nome_item,preco=preco_item,categoria=categoria_item,status=status_item,id=id_item )
             lista.append(item_buscado)
         return lista
+
+
+    def atualizar_status(self, id_item, novo_status):
+        self.cursor.execute("UPDATE item SET status = ? WHERE id = ?", (novo_status, id_item))
+        self.banco.commit()
         
             
