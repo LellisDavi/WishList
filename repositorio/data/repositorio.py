@@ -1,5 +1,5 @@
 import sqlite3
-
+from models.categoria import Categoria
 
 class Repositorio():
     def __init__(self):
@@ -34,4 +34,20 @@ class Repositorio():
         self.cursor.execute("INSERT INTO item(nome,preco,categoria_id, status) VALUES (?,?,?,?)",(item.nome, item.preco, categoria_id, item.status))
         novo_id_item = self.cursor.lastrowid
         self.banco.commit()
-        return novo_id_item    
+        return novo_id_item
+
+    def buscar_categoria(self):
+        self.cursor.execute("SELECT * FROM categoria") 
+        linhas = self.cursor.fetchall()
+        lista = []
+        for l in linhas:
+            id = l[0]
+            nome = l[1]
+            tipo = l[2]
+            categoria_buscada=Categoria(nome, tipo, id)
+            lista.append(categoria_buscada)
+        return lista    
+
+
+        
+            
