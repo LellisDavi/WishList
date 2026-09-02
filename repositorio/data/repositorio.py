@@ -1,5 +1,6 @@
 import sqlite3
 from models.categoria import Categoria
+from models.item import Item
 
 class Repositorio():
     def __init__(self):
@@ -46,8 +47,25 @@ class Repositorio():
             tipo = l[2]
             categoria_buscada=Categoria(nome, tipo, id)
             lista.append(categoria_buscada)
-        return lista    
+        return lista   
 
 
+    def buscar_itens(self):
+        self.cursor.execute("SELECT item.id, item.nome, item.preco, item.status, categoria.id, categoria.nome, categoria.tipo FROM item JOIN categoria ON item.categoria_id = categoria.id")
+        linhas = self.cursor.fetchall()
+        lista = []
+        for l in linhas:
+            id_categoria = l[4] 
+            nome_categoria = l[5]     
+            tipo_categoria = l[6]
+            categoria_item=Categoria(nome_categoria,tipo_categoria,id_categoria)
+
+            id_item = l[0]
+            nome_item = l[1]
+            preco_item = l[2]
+            status_item = l[3] 
+            item_buscado =Item(nome=nome_item,preco=preco_item,categoria=categoria_item,status=status_item,id=id_item )
+            lista.append(item_buscado)
+        return lista
         
             

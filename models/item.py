@@ -1,6 +1,7 @@
 from models.categoria import Categoria
 class Item():
-    def __init__(self, nome:str, preco: float, categoria:Categoria, status:str):
+    def __init__(self,nome:str, preco: float, categoria:Categoria, status:str,id=None):
+        self.id = id
         self.nome = nome
         self.preco = preco
         self.categoria = categoria
