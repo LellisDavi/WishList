@@ -29,6 +29,20 @@ class Wishlist():
             novo_item = Item(nome_item, preco, categoria_encontrada, status)
             self.repositorio.inserir_item(novo_item, categoria_encontrada.id)
 
-            
-            
+
+    def listar_itens(self):
+        itens = self.repositorio.buscar_itens()
+        necessidades = list()
+        desejos = list()
+        for item in itens:
+            if item.obter_tipo() == 'Necessidade':
+                necessidades.append(item)
+            else:
+                desejos.append(item)
+        print('=== Necessidades ===')
+        for produto_necessidade in necessidades:
+            print(f"Nome:{produto_necessidade.nome} Preço:{produto_necessidade.preco} Status:{produto_necessidade.status}")
+        print('=== Desejos ===')
+        for produto_desejo in desejos:
+            print(f"Nome:{produto_desejo.nome} Preço:{produto_desejo.preco} Status:{produto_desejo.status}")  
 
