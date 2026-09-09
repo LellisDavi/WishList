@@ -46,3 +46,23 @@ class Wishlist():
         for produto_desejo in desejos:
             print(f"Nome:{produto_desejo.nome} Preço:{produto_desejo.preco} Status:{produto_desejo.status}")  
 
+
+    def marcar_como_adquirido(self, id):
+        self.repositorio.atualizar_status(id, novo_status='adquirido')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
