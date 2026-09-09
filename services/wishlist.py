@@ -51,6 +51,16 @@ class Wishlist():
         self.repositorio.atualizar_status(id, novo_status='adquirido')
 
 
+    def listar_adquiridos(self):
+        adquiridos = list()
+        itens_buscados = self.repositorio.buscar_itens()
+        for item in itens_buscados:
+            if item.status == 'adquirido':
+                adquiridos.append(item)
+        for i in adquiridos:
+            print(f"Nome:{i.nome} Preço:{i.preco} Status:{i.status}")
+
+
 
 
 
