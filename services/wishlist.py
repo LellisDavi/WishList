@@ -41,12 +41,12 @@ class Wishlist():
                 desejos.append(item)
         print('=== Necessidades ===')
         for produto_necessidade in necessidades:
-            print(f"Nome:{produto_necessidade.nome} Preço:{produto_necessidade.preco} Status:{produto_necessidade.status}")
+            print(f"Id:{produto_necessidade.id} Nome:{produto_necessidade.nome} Preço:{produto_necessidade.preco} Status:{produto_necessidade.status}")
         print('=== Desejos ===')
         for produto_desejo in desejos:
-            print(f"Nome:{produto_desejo.nome} Preço:{produto_desejo.preco} Status:{produto_desejo.status}")  
+            print(f"Id:{produto_desejo.id} Nome:{produto_desejo.nome} Preço:{produto_desejo.preco} Status:{produto_desejo.status}")  
 
-
+ 
     def marcar_como_adquirido(self, id):
         self.repositorio.atualizar_status(id, novo_status='adquirido')
 
@@ -61,7 +61,10 @@ class Wishlist():
             print(f"Nome:{i.nome} Preço:{i.preco} Status:{i.status}")
 
 
-
+    def listar_categorias(self):
+        categorias = self.repositorio.buscar_categoria()
+        for c in categorias:
+            print(f"Nome: {c.nome} Tipo: {c.tipo}")
 
 
 

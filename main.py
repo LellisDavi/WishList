@@ -1,12 +1,11 @@
-from models.categoria import Categoria
-from models.item import Item
-
+from services.wishlist import Wishlist
 
 def main():
-    saude=Categoria('saude','necessidade')
-    item1=Item('Escova de Dente', 20, categoria=saude,status='pendente') 
-    print(item1.obter_tipo())
+    wishlist = Wishlist()
+    wishlist.repositorio.criar_tabelas()
 
-    
+    while True:
+        print('--- MENU WISHLIST --- ')
+        print('[1] ADCIONAR CATEGORIA \n [2] ADICIONAR ITEM \n [3] LISTAR ITENS \n [4] MARCAR ITEM \n [5] LISTAR ADQUIRIDOS \n [6] SAIR')
 if __name__ == '__main__':
     main()
