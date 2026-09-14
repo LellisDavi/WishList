@@ -51,19 +51,29 @@ WishList/
 └── database/
     └── wishlist.db
 ```
-Classes principais
-Classe	Responsabilidade
-Categoria	Representa uma categoria (nome, tipo, id)
-Item	Representa um item desejado (nome, preço, categoria, status), com o método obter_tipo() que consulta o tipo através da categoria vinculada
-Repositorio	Único ponto de contato com o banco SQLite — insere, busca e atualiza dados
-Wishlist	Orquestra as regras de negócio (ex: evitar categorias duplicadas) e conecta o menu ao repositório
-Modelo de dados (SQLite)
-categoria                    item
-├── id (PK)                  ├── id (PK)
-├── nome                     ├── nome
-└── tipo                     ├── preco
-                              ├── categoria_id (FK → categoria.id)
-                              └── status
+## Classes principais
+
+| Classe | Responsabilidade |
+|---|---|
+| `Categoria` | Representa uma categoria (nome, tipo, id) |
+| `Item` | Representa um item desejado (nome, preço, categoria, status), com o método `obter_tipo()` que consulta o tipo através da categoria vinculada |
+| `Repositorio` | Único ponto de contato com o banco SQLite — insere, busca e atualiza dados |
+| `Wishlist` | Orquestra as regras de negócio (ex: evitar categorias duplicadas) e conecta o menu ao repositório |
+```
+## Modelo de dados (SQLite)
+
+categoria
+├── id (PK)
+├── nome
+└── tipo
+
+item
+├── id (PK)
+├── nome
+├── preço
+├── categoria_id (FK → categoria.id)
+└── status
+```
 ## 🎓 Conceitos aplicados
 - Python 3 — orientação a objetos (encapsulamento, composição entre classes)
 - SQLite — persistência de dados, com relacionamento via chave estrangeira
