@@ -38,17 +38,19 @@ O sistema roda via terminal, com um menu interativo:
 
 O projeto segue uma separação de responsabilidades em camadas, um princípio de design que evita misturar lógica de negócio, acesso a dados e interface:
 
+```
 WishList/
-├── main.py                  # Ponto de entrada — menu do terminal
-├── models/                  # Classes de domínio (não sabem de banco nem de menu)
+├── main.py
+├── models/
 │   ├── categoria.py
 │   └── item.py
-├── repositorio/              # Camada de acesso a dados (só fala com o SQLite)
+├── repositorio/
 │   └── repositorio.py
-├── services/                 # Regras de negócio — orquestra tudo
+├── services/
 │   └── wishlist.py
 └── database/
-    └── wishlist.db           # Banco SQLite (gerado em tempo de execução)
+    └── wishlist.db
+```
 Classes principais
 Classe	Responsabilidade
 Categoria	Representa uma categoria (nome, tipo, id)
@@ -62,23 +64,28 @@ categoria                    item
 └── tipo                     ├── preco
                               ├── categoria_id (FK → categoria.id)
                               └── status
-🛠️ Tecnologias e conceitos aplicados
-Python 3 — orientação a objetos (encapsulamento, composição entre classes)
-SQLite — persistência de dados, com relacionamento via chave estrangeira
-Padrão Repository — separação entre lógica de negócio e acesso ao banco
-Prepared statements (?) — prevenção contra SQL Injection
-Git/GitHub — versionamento do projeto
+## 🎓 Conceitos aplicados
+- Python 3 — orientação a objetos (encapsulamento, composição entre classes)
+- SQLite — persistência de dados, com relacionamento via chave estrangeira
+- Padrão Repository — separação entre lógica de negócio e acesso ao banco
+
 🚀 Como rodar o projeto
 bash
 # Clone o repositório
+```bash
 git clone https://github.com/LellisDavi/WishList.git
 cd WishList
+```
 
 # Crie e ative o ambiente virtual
+```bash
 python -m venv venv
 venv\Scripts\Activate.ps1      # Windows (PowerShell)
+```
 
+```bash
 # Rode o programa
 python main.py
+```
 
 O banco de dados SQLite é criado automaticamente na primeira execução — não é necessário nenhuma configuração adicional.
